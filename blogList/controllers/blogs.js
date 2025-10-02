@@ -10,7 +10,12 @@ blogsRouter.get('/', async (request, response) => {
 
 // CREATE new blog (auth required)
 blogsRouter.post('/', async (request, response) => {
-  const { title, author, url, likes } = request.body;
+  const {
+    title,
+    author,
+    url,
+    likes = 0, // default value if likes is undefined
+  } = request.body;
 
   if (!title || !url) {
     return response.status(400).json({ error: 'title and url are required' });
