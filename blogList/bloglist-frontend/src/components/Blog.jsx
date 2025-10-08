@@ -28,7 +28,12 @@ const Blog = ({ blog, onLike, onDelete }) => {
   return (
     <div style={containerStyle}>
       <div style={titleRowStyle}>
-        <span>{blog.title}</span>
+        <span>
+          {blog.title}{' '}
+          <span style={{ fontWeight: 400, color: '#555', fontStyle: 'italic' }}>
+            by {blog.author}
+          </span>
+        </span>
         <button onClick={() => setShowAll((v) => !v)}>
           {showAll ? 'hide' : 'view'}
         </button>
@@ -36,7 +41,6 @@ const Blog = ({ blog, onLike, onDelete }) => {
 
       {showAll && (
         <div style={detailsStyle}>
-          <div>author: {blog.author}</div>
           <div>url: {blog.url}</div>
           <div>likes: {blog.likes ?? 0}</div>
           <button type="button" onClick={() => onLike(blog)}>
