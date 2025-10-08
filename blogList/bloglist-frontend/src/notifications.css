@@ -39,3 +39,183 @@
     transform: translateY(0);
   }
 }
+
+/* -------------------------------------------------- */
+/* Estilos globales y de UI para toda la aplicación   */
+/* (sin cambiar la lógica ni el orden del código)     */
+/* -------------------------------------------------- */
+
+/* Variables de color y tipografía */
+:root {
+  --bg: #f7f7fb;
+  --card-bg: #ffffff;
+  --text: #111827;
+  --muted: #6b7280;
+  --primary: #2563eb;
+  --primary-600: #1d4ed8;
+  --ring: #93c5fd;
+  --border: #e5e7eb;
+  --shadow: 0 6px 16px rgba(17, 24, 39, 0.08);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body,
+#root {
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  font-family: ui-sans-serif, system-ui, -apple-system, Segoe UI, Roboto,
+    Helvetica, Arial, 'Apple Color Emoji', 'Segoe UI Emoji';
+  color: var(--text);
+  background: linear-gradient(180deg, #f8fafc 0%, var(--bg) 100%);
+}
+
+/* Contenedor principal */
+#root > div {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 24px 16px 48px;
+}
+
+h1,
+h2 {
+  line-height: 1.1;
+  letter-spacing: -0.02em;
+  margin: 0.2rem 0 0.9rem;
+}
+
+h1 {
+  font-size: clamp(1.6rem, 2.5vw, 2.2rem);
+}
+
+h2 {
+  font-size: clamp(1.25rem, 1.8vw, 1.5rem);
+  color: #0f172a;
+}
+
+/* Tarjetas genéricas (divs con contenido interactivo) */
+/* Mejora el aspecto de los contenedores ya existentes (p. ej., Blog, Togglable, formularios) */
+#root div:has(> div > button),
+#root form {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  box-shadow: var(--shadow);
+}
+
+/* Espaciado y layout del contenido dentro de tarjetas */
+#root div:has(> div > button) {
+  padding: 12px 14px;
+  transition: box-shadow 0.2s ease, transform 0.06s ease;
+}
+
+#root div:has(> div > button):hover {
+  box-shadow: 0 10px 24px rgba(17, 24, 39, 0.1);
+}
+
+/* Texto secundario (como "by author") */
+#root span span {
+  color: var(--muted);
+}
+
+/* Formularios */
+form {
+  padding: 16px;
+}
+
+form > div {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+form > div:first-child {
+  margin-top: 6px;
+}
+
+input[type='text'],
+input[type='password'],
+input[type='email'],
+input[type='url'],
+input:not([type]) {
+  width: 100%;
+  padding: 10px 12px;
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  background: #fff;
+  color: var(--text);
+  outline: none;
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+input:focus {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+/* Botones */
+button {
+  appearance: none;
+  -webkit-appearance: none;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background: var(--primary);
+  color: #fff;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  padding: 8px 14px;
+  cursor: pointer;
+  transition: transform 0.05s ease, background 0.15s ease, box-shadow 0.15s ease;
+  box-shadow: 0 2px 6px rgba(37, 99, 235, 0.25);
+}
+
+button:hover {
+  background: var(--primary-600);
+}
+
+button:active {
+  transform: translateY(1px);
+}
+
+button:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 3px var(--ring);
+}
+
+/* Variante sutil para botones que aparecen dentro de tarjetas con más acciones */
+#root div:has(> div > button) button {
+  background: #0ea5e9;
+  box-shadow: 0 2px 6px rgba(14, 165, 233, 0.25);
+}
+
+#root div:has(> div > button) button:hover {
+  background: #0284c7;
+}
+
+/* Área de detalles del blog (cuando se muestra) */
+#root div:has(> div > button) > div > div {
+  margin: 6px 0;
+}
+
+#root div:has(> div > button) > div > div:first-child {
+  overflow-wrap: anywhere;
+  color: #0b5cab;
+}
+
+/* Mensajería y listas */
+p {
+  margin: 0.4rem 0 1rem;
+}
+
+ul,
+ol {
+  padding-left: 1.2rem;
+}
