@@ -1,0 +1,25 @@
+{
+  "name": "testing-playwright",
+  "version": "1.0.0",
+  "description": "part 5D Full Stack Open with Playwright testing",
+  "homepage": "https://github.com/mickel-arroz/fullstackopen-part5#readme",
+  "bugs": {
+    "url": "https://github.com/mickel-arroz/fullstackopen-part5/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mickel-arroz/fullstackopen-part5.git"
+  },
+  "license": "ISC",
+  "author": "mickel-arroz",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test",
+    "test:report": "playwright show-report"
+  },
+  "devDependencies": {
+    "@playwright/test": "^1.56.0",
+    "@types/node": "^24.7.2"
+  }
+}
