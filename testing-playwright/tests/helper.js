@@ -12,7 +12,7 @@ const createNote = async (page, content) => {
   await page.getByRole('textbox').fill(content);
   await page.getByRole('button', { name: 'save' }).click();
   // Espera a que la nota recién creada aparezca en el DOM
-  await page.getByText(content).last().waitFor();
+  await page.getByText(content).waitFor();
 };
 
 export { loginWith, createNote };
