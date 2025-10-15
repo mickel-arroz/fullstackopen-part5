@@ -62,4 +62,20 @@ describe('Note app', () => {
       });
     });
   });
+
+  test('login fails with wrong password', async ({ page }) => {
+    await page.getByRole('button', { name: 'log in' }).click();
+    await page.getByTestId('username').fill('mluukkai');
+    await page.getByTestId('password').fill('wrong');
+    await page.getByRole('button', { name: 'login' }).click();
+
+    const errorDiv = await page.locator('.error');
+    await expect(errorDiv).toContainText('Wrong credentials');
+    await expect(errorDiv).toHaveCSS('border-style', 'solid');
+    await expect(errorDiv).toHaveCSS('color', 'rgb(255, 0, 0)');
+
+    await expect(
+      page.getByText('Matti Luukkainen logged in')
+    ).not.toBeVisible();
+  });
 });
