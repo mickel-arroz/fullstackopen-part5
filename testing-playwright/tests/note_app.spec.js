@@ -52,6 +52,26 @@ describe('Note app', () => {
         await expect(page.getByText('make important')).toBeVisible();
       });
     });
+
+    describe('and several notes exists', () => {
+      beforeEach(async ({ page }) => {
+        await createNote(page, 'first note', true);
+        await createNote(page, 'second note', true);
+        await createNote(page, 'third note', true);
+      });
+
+      test('one of those can be made nonimportant', async ({ page }) => {
+        const secondNoteElement = await page
+          .getByText('second note')
+          .locator('..');
+        await secondNoteElement
+          .getByRole('button', { name: 'make not important' })
+          .click();
+        await expect(
+          secondNoteElement.getByText('make important')
+        ).toBeVisible();
+      });
+    });
   });
 
   test('login fails with wrong password', async ({ page }) => {
