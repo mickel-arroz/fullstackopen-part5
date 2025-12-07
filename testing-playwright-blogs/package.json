@@ -1,0 +1,24 @@
+{
+  "name": "testing-playwright-blogs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "playwright test --ui",
+    "test:report": "playwright show-report",
+    "dev:web": "npm --prefix ../blogList/bloglist-frontend run dev -- --host --port 5173",
+    "dev:api": "npm --prefix ../blogList run start:test",
+    "dev:e2e": "concurrently \"npm run dev:api\" \"npm run dev:web\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "devDependencies": {
+    "@playwright/test": "^1.56.1",
+    "@types/node": "^24.8.1",
+    "cross-env": "^10.1.0",
+    "dotenv": "^16.5.0",
+    "concurrently": "^9.1.2"
+  }
+}

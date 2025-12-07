@@ -115,11 +115,9 @@ const App = () => {
     );
     if (!confirmed) return;
     try {
-      const deletedBlog = await blogService.remove(id);
+      await blogService.remove(id);
       setBlogs(blogs.filter((b) => b.id !== id));
-      setMessage(
-        `Deleted blog: "${deletedBlog.title}" by ${deletedBlog.author}`
-      );
+      setMessage(`Blog deleted`);
       setTypeMessage('success');
       setTimeout(() => {
         setMessage(null);
