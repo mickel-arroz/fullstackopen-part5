@@ -1,0 +1,25 @@
+{
+  "name": "testing-cypress-notes",
+  "version": "1.0.0",
+  "description": "fullstackopen-part5",
+  "homepage": "https://github.com/mickel-arroz/fullstackopen-part5#readme",
+  "bugs": {
+    "url": "https://github.com/mickel-arroz/fullstackopen-part5/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/mickel-arroz/fullstackopen-part5.git"
+  },
+  "license": "ISC",
+  "author": "Mickel Arroz",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open"
+  },
+  "devDependencies": {
+    "cypress": "^15.8.0",
+    "eslint-plugin-cypress": "^5.2.0"
+  }
+}
