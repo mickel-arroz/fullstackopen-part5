@@ -29,6 +29,21 @@ describe('Note app', function () {
 
     cy.contains('Matti Luukkainen logged-in');
   });
+
+  it('login fails with wrong password', function () {
+    cy.contains('log in').click();
+    cy.get('#username').type('mluukkai');
+    cy.get('#password').type('wrong');
+    cy.get('#login-button').click();
+
+    cy.get('.error')
+      .should('contain', 'Wrong credentials')
+      .and('have.css', 'color', 'rgb(255, 0, 0)')
+      .and('have.css', 'border-style', 'solid');
+
+    cy.contains('Matti Luukkainen logged in').should('not.exist');
+  });
+
   describe('when logged in', function () {
     beforeEach(function () {
       cy.contains('log in').click();
@@ -36,6 +51,7 @@ describe('Note app', function () {
       cy.get('input:last').type('salainen');
       cy.get('#login-button').click();
     });
+
     it('a new note can be created', function () {
       cy.contains('new note').click();
       cy.get('input').type('a note created by cypress');
