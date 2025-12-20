@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import PropTypes from 'prop-types';
 
-const Blog = ({ blog, onLike, onDelete }) => {
+const Blog = ({ blog, onLike, onDelete, user }) => {
   const [showAll, setShowAll] = useState(false);
 
   const containerStyle = {
@@ -26,7 +26,7 @@ const Blog = ({ blog, onLike, onDelete }) => {
   };
 
   return (
-    <div style={containerStyle}>
+    <div className="blog" style={containerStyle}>
       <div style={titleRowStyle}>
         <span>
           {blog.title}{' '}
@@ -47,9 +47,11 @@ const Blog = ({ blog, onLike, onDelete }) => {
             like
           </button>
           <div>added by: {blog.user?.name ?? 'unknown'}</div>
-          <button type="button" onClick={() => onDelete(blog.id)}>
-            DELETE
-          </button>
+          {blog.user && user && blog.user.username === user.username && (
+            <button type="button" onClick={() => onDelete(blog.id)}>
+              DELETE
+            </button>
+          )}
         </div>
       )}
     </div>
@@ -66,6 +68,7 @@ Blog.propTypes = {
     user: PropTypes.shape({
       id: PropTypes.string.isRequired,
       name: PropTypes.string.isRequired,
+      username: PropTypes.string.isRequired,
     }),
   }).isRequired,
   onLike: PropTypes.func.isRequired,

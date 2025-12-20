@@ -1,0 +1,17 @@
+{
+  "name": "testing-cypress-blogs",
+  "version": "1.0.0",
+  "description": "",
+  "license": "ISC",
+  "author": "Mickel Arroz",
+  "type": "commonjs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "cypress:open": "cypress open",
+    "test:e2e": "cypress run"
+  },
+  "devDependencies": {
+    "cypress": "^15.8.0"
+  }
+}
